@@ -27,9 +27,9 @@ def main(args):
         id=nmdb.__name__,
         domain='',
 
-        publisher_name="Max Planck Institute for the Science of Human History",
-        publisher_place="Jena",
-        publisher_url="http://www.shh.mpg.de",
+        publisher_name="University Göttingen",
+        publisher_place="Göttingen",
+        publisher_url="",
         license="http://creativecommons.org/licenses/by/4.0/",
         jsondata={
             'license_icon': 'cc-by.png',
@@ -63,13 +63,13 @@ def main(args):
     refs = collections.defaultdict(list)
 
 
-    for param in args.cldf.iter_rows('ParameterTable', 'id', 'name'):
+    for param in args.cldf.iter_rows('ParameterTable', 'id', 'name', 'description'):
         data.add(
             models.Feature,
             param['id'],
             id=param['id'],
-            name='{} [{}]'.format(param['name'], param['id']),
-    )
+            name=param['description'] or param['id'],
+        )
     for pid, codes in itertools.groupby(
         sorted(
             args.cldf.iter_rows('CodeTable', 'id', 'name', 'description', 'parameterReference'),
