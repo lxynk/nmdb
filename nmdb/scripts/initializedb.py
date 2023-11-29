@@ -88,9 +88,22 @@ def main(args):
                 parameter=data['Feature'][code['parameterReference']],
                 jsondata=dict(color=color),
             )
+
+    for ex in args.cldf.iter_rows('ExampleTable', 'id', 'languageReference'):
+        data.add(
+            common.Sentence,
+            ex['id'],
+            id=ex['id'],
+            name=ex['Primary_Text'],
+            analyzed='\t'.join(ex['Analyzed_Word']),
+            gloss='\t'.join(ex['Gloss']),
+            description=ex['Translated_Text'],
+            language=data['Variety'][ex['languageReference']],
+        )
+
     for val in args.cldf.iter_rows(
             'ValueTable',
-            'id', 'value', 'languageReference', 'parameterReference', 'codeReference', 'source'):
+            'id', 'value', 'languageReference', 'parameterReference', 'codeReference', 'exampleReference', 'source'):
         if val['value'] is None:  # Missing values are ignored.
             continue
         vsid = (val['languageReference'], val['parameterReference'])
@@ -107,7 +120,7 @@ def main(args):
         for ref in val.get('source', []):
             sid, pages = Sources.parse(ref)
             refs[(vsid, sid)].append(pages)
-        data.add(
+        v = data.add(
             common.Value,
             val['id'],
             id=val['id'],
@@ -115,6 +128,8 @@ def main(args):
             valueset=vs,
             domainelement=data['DomainElement'][val['codeReference']],
         )
+        for exid in val['exampleReference']:
+            DBSession.add(common.ValueSentence(value=v, sentence=data['Sentence'][exid]))
 
     for (vsid, sid), pages in refs.items():
         DBSession.add(common.ValueSetReference(
@@ -122,6 +137,7 @@ def main(args):
             source=data['Source'][sid],
             description='; '.join(nfilter(pages))
         ))
+
     load_families(
         Data(),
         [(l.glottocode, l) for l in data['Variety'].values()],
