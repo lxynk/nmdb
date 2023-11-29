@@ -13,7 +13,7 @@ from nmdb import models
 
 class Languages(datatables.Languages):
     def base_query(self, query):
-        return query.join(Family).options(joinedload(models.Variety.family)).distinct()
+        return query.outerjoin(Family).options(joinedload(models.Variety.family)).distinct()
 
     def col_defs(self):
         return [
