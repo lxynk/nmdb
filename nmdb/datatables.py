@@ -29,6 +29,15 @@ class Languages(datatables.Languages):
         ]
 
 
+class ExampleCol(Col):
+    __kw__ = dict(bSearchable=False, bSortable=False)
+
+    def format(self, item):
+        if util.glossed_examples(item):
+            return DetailsRowLinkCol(self.dt, '', button_text='Example').format(item)
+        #return HTML.ul(*util.glossed_examples(item), class_='unstyled')
+        return ''
+
 
 def includeme(config):
     """register custom datatables"""
