@@ -3,6 +3,10 @@ Todo's:
 - [ ] visualize glossed examples
   - [ ] do not visualize 1st line if identical with the 2nd one
   - [ ] same font size for gloss line
+  - [ ] ungrammatical examples
+  - [ ] gaps in the gloss line (extra tab)
+  - [ ] subscripts and further markup
+  - [ ] show example button only if example available: [`d317db0`](https://github.com/lxynk/nmdb/commit/d317db025cb7708a4b64d371570760c8034942ee)
   - [ ] button name "example"
   - [ ] pop-up explanations for gloss abbreviations
 - [x] pull language data from glottolog
