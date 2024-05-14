@@ -13,5 +13,6 @@ Todo's:
 - [x] domain name, nginx, https
 - [ ] bib references
 - [ ] contact button to report mistakes
-- [ ] add further values
+- [ ] add further values (in decreasing string length order!)
+- [ ] reorder and recolor the values on the website
 - [x] multiple parameters per example: [`ff999d0`](https://github.com/lxynk/nmdb-data/commit/ff999d01336424d5d6156d4a5383270d7e302504)
