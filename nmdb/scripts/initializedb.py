@@ -89,7 +89,7 @@ def main(args):
                 jsondata=dict(color=color),
             )
 
-    for ex in args.cldf.iter_rows('ExampleTable', 'id', 'languageReference'):
+    for ex in args.cldf.iter_rows('ExampleTable', 'id', 'languageReference', 'source'):
         data.add(
             common.Sentence,
             ex['id'],
@@ -98,6 +98,7 @@ def main(args):
             analyzed='\t'.join(ex['Analyzed_Word']),
             gloss='\t'.join(ex['Gloss']),
             description=ex['Translated_Text'],
+            source=ex['Source'],
             language=data['Variety'][ex['languageReference']],
         )
 
