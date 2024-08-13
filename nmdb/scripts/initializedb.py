@@ -89,8 +89,8 @@ def main(args):
                 jsondata=dict(color=color),
             )
 
-    for ex in args.cldf.iter_rows('ExampleTable', 'id', 'languageReference', 'source'):
-        data.add(
+    for ex in args.cldf.iter_rows('ExampleTable', 'id', 'languageReference'):
+        p = data.add(
             common.Sentence,
             ex['id'],
             id=ex['id'],
@@ -98,9 +98,20 @@ def main(args):
             analyzed='\t'.join(ex['Analyzed_Word']),
             gloss='\t'.join(ex['Gloss']),
             description=ex['Translated_Text'],
-            source=ex['Source'],
             language=data['Variety'][ex['languageReference']],
         )
+
+        ref = ex['Source']
+        if ref is None:
+            continue
+        else:
+            sid, desc = Sources.parse(ref)
+            DBSession.add(common.SentenceReference(
+                sentence=p,
+                source=data['Source'][sid],
+                key=sid,
+                description=desc
+            ))
 
     for val in args.cldf.iter_rows(
             'ValueTable',
