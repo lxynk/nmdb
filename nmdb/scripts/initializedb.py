@@ -101,7 +101,7 @@ def main(args):
             language=data['Variety'][ex['languageReference']],
         )
 
-        ref = ex['Source']
+        ref = ex['Source'][0] if ex['Source'] else None
         if ref is None:
             continue
         else:
