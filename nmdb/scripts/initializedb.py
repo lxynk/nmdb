@@ -99,6 +99,7 @@ def main(args):
             gloss='\t'.join(ex['Gloss']),
             description=ex['Translated_Text'],
             language=data['Variety'][ex['languageReference']],
+            source=ex['Source_Comment']
         )
 
         ref = ex['Source'][0] if ex['Source'] else None
