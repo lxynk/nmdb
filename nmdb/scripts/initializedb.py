@@ -90,7 +90,7 @@ def main(args):
             )
 
     for ex in args.cldf.iter_rows('ExampleTable', 'id', 'languageReference'):
-        data.add(
+        p = data.add(
             common.Sentence,
             ex['id'],
             id=ex['id'],
@@ -99,7 +99,20 @@ def main(args):
             gloss='\t'.join(ex['Gloss']),
             description=ex['Translated_Text'],
             language=data['Variety'][ex['languageReference']],
+            source=ex['Source_Comment']
         )
+
+        ref = ex['Source'][0] if ex['Source'] else None
+        if ref is None:
+            continue
+        else:
+            sid, desc = Sources.parse(ref)
+            DBSession.add(common.SentenceReference(
+                sentence=p,
+                source=data['Source'][sid],
+                key=sid,
+                description=desc
+            ))
 
     for val in args.cldf.iter_rows(
             'ValueTable',
