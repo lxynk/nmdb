@@ -99,6 +99,7 @@ def main(args):
             gloss='\t'.join(ex['Gloss']),
             description=ex['Translated_Text'],
             language=data['Variety'][ex['languageReference']],
+            comment=ex['Comment'],
             source=ex['Source_Comment']
         )
 
