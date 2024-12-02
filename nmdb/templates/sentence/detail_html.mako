@@ -25,14 +25,10 @@
 ${h.rendered_sentence(ctx)|n}
 
 <dl>
-% if ctx.comment:
-<dt>${_('Comment')}:</dt>
-<dd>${ctx.markup_comment or ctx.comment|n}</dd>
-% endif
-% if ctx.source:
-<dt>${_('Type')}:</dt>
-<dd>${ctx.type}</dd>
-% endif
+##% if ctx.source:
+##<dt>${_('Type')}:</dt>
+##<dd>${ctx.type}</dd>
+##% endif
 % if ctx.references or ctx.source:
 <dt>${_('Source')}:</dt>
 % if ctx.source:
@@ -41,5 +37,9 @@ ${h.rendered_sentence(ctx)|n}
 % if ctx.references:
 <dd>${h.linked_references(request, ctx)|n}</dd>
 % endif
+% endif
+% if ctx.comment:
+<dt>${_('Comment')}:</dt>
+<dd>${ctx.markup_comment or ctx.comment|n}</dd>
 % endif
 </dl>
