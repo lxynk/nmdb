@@ -1,23 +1,15 @@
-<%inherit file="../snippet.mako"/>
 <%namespace name="util" file="../util.mako"/>
 
-we're here
-
-% if ctx.valueset.description:
-<p>${h.text2html(h.Markup(ctx.valueset.markup_description) if ctx.valueset.markup_description else ctx.valueset.description)}</p>
-% endif
-
-% if ctx.confidence:
-<dl>
-    <dt>${_('Confidence')}:</dt>
-    <dd>${ctx.confidence}</dd>
-</dl>
-% endif
-
-% if ctx.sentence_assocs:
-${util.sentences(ctx, fmt='short')}
-% endif
-
-% if not ctx.sentence_assocs and not ctx.valueset.description and not ctx.confidence:
-<p>No details available</p>
-% endif
+% for a in ctx.sentence_assocs:
+    <dl>
+        <dt>${h.link(request, a.sentence, label='%s %s:' % (_('Sentence'), a.sentence.id))}</dt>
+        <dd>${h.rendered_sentence(a.sentence)}</dd>
+        % if a.sentence.source or a.sentence.references:
+            Source: ${a.sentence.source or h.linked_references(request, a.sentence)|n}
+        % endif
+        <br>
+        % if a.sentence.comment:
+            Comment: ${a.sentence.comment}
+        % endif
+    </dl>
+% endfor
