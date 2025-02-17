@@ -22,7 +22,7 @@
     <dd>${h.link(request, ctx.language)}</dd>
 </dl>
 
-${h.rendered_sentence(ctx)|n}
+${u.nmdb_rendered_sentence(ctx)|n}
 
 <dl>
     % if ctx.references or ctx.source:

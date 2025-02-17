@@ -44,7 +44,7 @@ ALT_TRANSLATION_LANGUAGE_PATTERN = re.compile(r'((?P<language>[a-zA-Z\s]+):)')
 
 # TODO: enumerate exceptions: 1SG, 2SG, 3SG, ?PL, ?DU
 
-def rendered_sentence(sentence, abbrs=None, fmt='long'):
+def nmdb_rendered_sentence(sentence, abbrs=None, fmt='long'):
     """Format a sentence as HTML."""
     if sentence.xhtml:
         return HTML.div(
@@ -123,6 +123,10 @@ def rendered_sentence(sentence, abbrs=None, fmt='long'):
                 HTML.div(morpheme, class_='morpheme'),
                 HTML.div(*html_gloss, **{'class': 'gloss'}),
                 class_='gloss-unit'))
+    if sentence.type:
+        gr_ungr_translation = 'Intended: \u2018' + sentence.description + '\u2019'
+    else:
+        gr_ungr_translation = '\u2018' + sentence.description + '\u2019'
 
     return HTML.div(
         HTML.div(
@@ -132,8 +136,8 @@ def rendered_sentence(sentence, abbrs=None, fmt='long'):
                 HTML.div(literal(sentence.markup_text or sentence.name),
                          class_='object-language'),
                 HTML.div(*units, **{'class': 'gloss-box'}) if units else '',
-                HTML.div(sentence.description, class_='translation')
-                if sentence.description else '',
+                HTML.div(gr_ungr_translation, class_='translation')
+                if gr_ungr_translation else '',
                 alt_translation(sentence),
                 class_='body',
             ),
