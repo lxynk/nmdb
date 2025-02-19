@@ -17,5 +17,6 @@ Todo's:
 - [ ] web application:
   - [ ] functionality to combine parameters (cf. WALS/Grambank)
   - [ ] contact button to report mistakes
-  - [ ] rename buttons
+  - [ ] rename buttons (values, example, cite)
+  - [ ] reorder columns
   - [ ] reorder/recolor the values
