@@ -3,8 +3,8 @@ Todo's:
 - [x] pull language data from glottolog
 - [x] domain name, nginx, https
 - [x] multiple parameters per example
-- [ ] add further values (in decreasing string length order!)
-- [ ] references
+- [x] add further values (in decreasing string length order!)
+- [x] references
 - [ ] examples:
   - [x] visualize examples
   - [x] show example button only if example available
