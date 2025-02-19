@@ -1,1 +1,6 @@
+.translation:before { content: ""; }
+.translation:after { content: ""; }
 
+td.gloss, div.gloss {
+  font-size: 100%;
+}

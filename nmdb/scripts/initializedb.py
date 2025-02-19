@@ -100,7 +100,8 @@ def main(args):
             description=ex['Translated_Text'],
             language=data['Variety'][ex['languageReference']],
             comment=ex['Comment'],
-            source=ex['Source_Comment']
+            source=ex['Source_Comment'],
+            type=ex['Grammaticality_Judgement']
         )
 
         ref = ex['Source'][0] if ex['Source'] else None
