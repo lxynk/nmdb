@@ -62,6 +62,11 @@ def main(args):
 
     refs = collections.defaultdict(list)
 
+    for row in args.cldf['abbreviations.csv']:
+        DBSession.add(common.GlossAbbreviation(
+            id=row['ID'],
+            name=row['Name']
+        ))
 
     for param in args.cldf.iter_rows('ParameterTable', 'id', 'name', 'description'):
         data.add(
