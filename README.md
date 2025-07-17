@@ -9,11 +9,11 @@ Todo's:
   - [x] visualize examples
   - [x] show example button only if example available
   - [ ] do not visualize 1st line if identical with 2nd line
-  - [ ] same font size for gloss line
+  - [x] same font size for gloss line
   - [ ] ungrammatical examples (intended)
   - [ ] gaps in the gloss line (extra tab)
   - [ ] subscripts and further markup
-  - [ ] pop-up explanations for gloss abbreviations
+  - [x] pop-up explanations for gloss abbreviations
 - [ ] web application:
   - [ ] functionality to combine parameters (cf. WALS/Grambank)
   - [ ] contact button to report mistakes
