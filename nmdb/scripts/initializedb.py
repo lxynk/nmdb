@@ -27,7 +27,7 @@ def main(args):
         id=nmdb.__name__,
         domain='',
 
-        publisher_name="University Göttingen",
+        publisher_name="University of Göttingen",
         publisher_place="Göttingen",
         publisher_url="",
         license="http://creativecommons.org/licenses/by/4.0/",
