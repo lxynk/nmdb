@@ -41,7 +41,7 @@ class ExampleCol(Col):
 
 class Datapoints(datatables.Values):
     def col_defs(self):
-        return [ExampleCol(self, 'examples')] + datatables.Values.col_defs(self)[1:]
+        return [ExampleCol(self, 'examples')] + datatables.Values.col_defs(self)[1:3] + [Col(self, 'description', sTitle='Comment', bSearchable=False)]
 
 
 def includeme(config):

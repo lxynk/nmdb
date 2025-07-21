@@ -145,6 +145,7 @@ def main(args):
             val['id'],
             id=val['id'],
             name=val['value'],
+            description=val['Comment'],
             valueset=vs,
             domainelement=data['DomainElement'][val['codeReference']],
         )
