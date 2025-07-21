@@ -10,7 +10,7 @@ Todo's:
   - [x] show example button only if example available
   - [ ] do not visualize 1st line if identical with 2nd line
   - [x] same font size for gloss line
-  - [ ] ungrammatical examples (intended)
+  - [x] ungrammatical examples (intended)
   - [ ] gaps in the gloss line (extra tab)
   - [ ] subscripts and further markup
   - [x] pop-up explanations for gloss abbreviations
@@ -18,5 +18,5 @@ Todo's:
   - [ ] functionality to combine parameters (cf. WALS/Grambank)
   - [ ] contact button to report mistakes
   - [ ] rename buttons (values, example, cite)
-  - [ ] reorder columns
+  - [ ] reorder columns, adjust width, searchable/sortable
   - [ ] reorder/recolor the values
