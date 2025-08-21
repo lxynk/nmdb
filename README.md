@@ -8,9 +8,10 @@ Todo's:
 - [ ] examples:
   - [x] visualize examples
   - [x] show example button only if example available
-  - [ ] do not visualize 1st line if identical with 2nd line
+  - [x] do not visualize 1st line if identical with 2nd line
   - [x] same font size for gloss line
   - [x] ungrammatical examples (intended)
+  - [ ] indent gloss by width of ungrammatical sign
   - [ ] gaps in the gloss line (extra tab)
   - [ ] subscripts and further markup
   - [x] pop-up explanations for gloss abbreviations

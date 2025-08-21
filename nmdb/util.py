@@ -134,7 +134,9 @@ def nmdb_rendered_sentence(sentence, abbrs=None, fmt='long'):
                 HTML.div(sentence.original_script, class_='original-script')
                 if sentence.original_script else '',
                 HTML.div(literal(sentence.markup_text or sentence.name),
-                         class_='object-language'),
+                         class_='object-language')
+                # TODO: implement the line below also for markup_text if needed
+                if '\t'.join(sentence.name.split()) != sentence.analyzed else '',
                 HTML.div(*units, **{'class': 'gloss-box'}) if units else '',
                 HTML.div(gr_ungr_translation, class_='translation')
                 if gr_ungr_translation else '',
